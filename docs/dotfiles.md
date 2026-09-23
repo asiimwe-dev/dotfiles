@@ -260,7 +260,7 @@ All start with `Ctrl-G` then:
 
 - `ZLE_RPROMPT_INDENT=0` removes the right-prompt margin.
 - `precmd` hook writes window title (`~`) preserving `$?`.
-- **Transient prompt:** on `zle-line-finish`, executed prompts collapse to a cyan `❯`; restored via `precmd`.
+- **Transient prompt (toggleable, persistent):** default keeps the full prompt (cmd duration, memory, time, dir/git/package info) visible on every finished line. `starship-transient` opts into collapsing executed prompts to a cyan `❯`; `starship-full` restores the full prompt; `starship-reset` clears persisted state back to the default. The choice is stored in `~/.local/state/starship.transient` (`XDG_STATE_HOME`), so it survives terminal restarts until you toggle it again. `STARSHIP_TRANSIENT=1` in the environment sets an opt-in baseline.
 - `eval "$(starship init zsh)"` runs after Oh My Zsh.
 
 ---
