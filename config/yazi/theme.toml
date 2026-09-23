@@ -1,0 +1,143 @@
+# ==============================================================================
+# Solarized Osaka - High-Contrast Neon (Optimized for Blurred Glass)
+# ==============================================================================
+
+[mgr]
+cwd             = { fg = "#00f5d4", bold = true } # Neon Mint / Cyan
+border          = { fg = "#586e75" }             # Visible Muted Teal Border
+
+find_keyword    = { fg = "#ffee55", bold = true } # Electric Yellow
+find_position   = { fg = "#00ff87" }             # Neon Green
+
+marker_selected = { fg = "#00ff87", bold = true }
+marker_copied   = { fg = "#ffee55" }
+marker_cut      = { fg = "#ff3366" }
+
+count_selected  = { fg = "#00ff87", bold = true }
+count_copied    = { fg = "#ffee55", bold = true }
+count_cut       = { fg = "#ff3366", bold = true }
+
+# ------------------------------------------------------------------------------
+# Hovered & Preview Indicators
+# ------------------------------------------------------------------------------
+
+[indicator]
+current = { fg = "#000000", bg = "#00f5d4", bold = true }
+preview = { fg = "#000000", bg = "#38bdf8" }
+
+# ------------------------------------------------------------------------------
+# Tab Bar
+# ------------------------------------------------------------------------------
+
+[tabs]
+active   = { fg = "#00f5d4", bg = "reset", bold = true }
+inactive = { fg = "#839496", bg = "reset" }
+
+# ------------------------------------------------------------------------------
+# Mode Indicators (High Contrast Pill Tops)
+# ------------------------------------------------------------------------------
+
+[mode]
+# Normal Mode (Electric Cyan)
+normal_main = { fg = "#000000", bg = "#00f5d4", bold = true }
+normal_alt  = { fg = "#00f5d4", bg = "reset" }
+
+# Visual Select Mode ('v') (Neon Purple / Magenta)
+select_main = { fg = "#000000", bg = "#e056fd", bold = true }
+select_alt  = { fg = "#e056fd", bg = "reset" }
+
+# Visual Unset Mode ('V') (Neon Orange / Red)
+unset_main  = { fg = "#000000", bg = "#ff5252", bold = true }
+unset_alt   = { fg = "#ff5252", bg = "reset" }
+
+# ------------------------------------------------------------------------------
+# Status Line & Permissions
+# ------------------------------------------------------------------------------
+
+[status]
+perm_type   = { fg = "#38bdf8" }
+perm_read   = { fg = "#ffee55" }
+perm_write  = { fg = "#ff3366" }
+perm_exec   = { fg = "#00ff87" }
+
+# ------------------------------------------------------------------------------
+# Input & Rename Popups
+# ------------------------------------------------------------------------------
+
+[input]
+border   = { fg = "#00f5d4" }
+title    = { fg = "#ffffff", bold = true }
+value    = { fg = "#ffffff" }
+selected = { bg = "#073642" }
+
+# ------------------------------------------------------------------------------
+# Keybinding Helper Dialog ('which')
+# ------------------------------------------------------------------------------
+
+[which]
+mask = { bg = "#073642" }
+cand = { fg = "#00f5d4", bold = true }
+rest = { fg = "#ffffff" }
+desc = { fg = "#f368e0" }
+
+# ------------------------------------------------------------------------------
+# Notifications / Toast Messages
+# ------------------------------------------------------------------------------
+
+[notify]
+title_info  = { fg = "#00f5d4" }
+title_warn  = { fg = "#ffee55" }
+title_error = { fg = "#ff3366" }
+
+# ------------------------------------------------------------------------------
+# Background Tasks Window
+# ------------------------------------------------------------------------------
+
+[tasks]
+border  = { fg = "#00f5d4" }
+title   = { fg = "#ffffff", bold = true }
+hovered = { fg = "#00ff87", bold = true }
+
+# ------------------------------------------------------------------------------
+# Auto-Completion Dropdown
+# ------------------------------------------------------------------------------
+
+[completion]
+border   = { fg = "#00f5d4" }
+active   = { fg = "#000000", bg = "#00f5d4", bold = true }
+inactive = { fg = "#ffffff" }
+
+# ------------------------------------------------------------------------------
+# Filetype Color Rules (Max Legibility)
+# ------------------------------------------------------------------------------
+
+[filetype]
+rules = [
+    { mime = "image/*", fg = "#ffee55" },
+    { mime = "{audio,video}/*", fg = "#f368e0" },
+    { mime = "inode/empty", fg = "#00f5d4" },
+    { url = "*", is = "orphan", fg = "#ff3366" },
+    { url = "*/", fg = "#38bdf8", bold = true },
+    { url = "*", is = "exec", fg = "#00ff87", bold = true },
+    { url = "*", fg = "#ffffff" },
+]
+
+# ------------------------------------------------------------------------------
+# Git Integration
+# ------------------------------------------------------------------------------
+
+[git]
+modified_sign  = "M"
+added_sign     = "A"
+untracked_sign = "?"
+ignored_sign   = "I"
+deleted_sign   = "D"
+updated_sign   = "U"
+clean_sign     = ""
+
+modified  = { fg = "#ffee55" } # Electric Yellow
+added     = { fg = "#00ff87" } # Neon Green
+untracked = { fg = "#94a3b8" } # Crisp Light Gray
+deleted   = { fg = "#ff3366" } # Neon Coral Red
+ignored   = { fg = "#586e75" } # Dark Teal Gray
+updated   = { fg = "#e056fd" } # Bright Purple

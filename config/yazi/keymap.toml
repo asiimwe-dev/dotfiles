@@ -1,0 +1,127 @@
+# ==============================================================================
+# Custom Keymaps
+# ==============================================================================
+
+[mgr]
+
+# ------------------------------------------------
+# Open terminal in current directory
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "!" ]
+run = 'shell "$SHELL" --block'
+desc = "Open shell"
+
+# ------------------------------------------------
+# Open in Neovim
+# (there is no built-in/installed "edit" plugin — this calls nvim directly,
+# reusing the same command as the [opener].edit entry in yazi.toml)
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "e" ]
+run = '''shell 'nvim "$@"' --block'''
+desc = "Open in Neovim"
+
+# ------------------------------------------------
+# Toggle hidden files
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "." ]
+run = 'hidden toggle'
+desc = "Toggle hidden"
+
+# ------------------------------------------------
+# Refresh
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "R" ]
+run = 'refresh'
+desc = "Refresh"
+
+# ------------------------------------------------
+# Copy path / filename / directory
+# NOTE: current Yazi already binds these by default to "c,c" / "c,f" / "c,d".
+# Dropped the old "y,p"/"y,n"/"y,d" versions since they were redundant and
+# made every plain "y" (yank) press wait briefly for a possible follow-up key.
+# ------------------------------------------------
+
+# ------------------------------------------------
+# Navigation Jumps
+# "g,h" and "g,c" are already Yazi defaults; only "g,p" is custom here.
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "g", "p" ]
+run = 'cd ~/Dev'
+desc = "Projects"
+
+# ------------------------------------------------
+# Preview Scrolling (Vim Style)
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "<C-e>" ]
+run = 'seek 5'
+desc = "Scroll down in preview"
+
+[[mgr.prepend_keymap]]
+on = [ "<C-y>" ]
+run = 'seek -5'
+desc = "Scroll up in preview"
+
+# ------------------------------------------------
+# Plugin Controls
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on = [ "C" ]
+run = 'plugin ouch'
+desc = "Compress with ouch"
+
+# ------------------------------------------------
+# Move to Trash instead of permanent delete
+# NOTE: current Yazi's default "d"/"D" already do exactly this (trash vs.
+# permanent delete), so these two bindings are technically redundant — kept
+# here only so the intent stays explicit and self-documenting in your config.
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on   = [ "d" ]
+run  = "remove"
+desc = "Trash selected files"
+
+[[mgr.prepend_keymap]]
+on   = [ "D" ]
+run  = "remove --permanently"
+desc = "Permanently delete selected files"
+
+# ------------------------------------------------
+# Search
+# Current Yazi has native content/name search now, so the un-installed
+# `plugin fg` bindings were replaced with these built-ins. If you still want
+# fzf-preview search, see the note in package.toml for how to add fg.yazi
+# and bind it here instead.
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on   = [ "s", "g" ]
+run  = "search --via=rg"
+desc = "Search file contents (ripgrep)"
+
+[[mgr.prepend_keymap]]
+on   = [ "s", "f" ]
+run  = "search --via=fd"
+desc = "Search filenames (fd)"
+
+# ------------------------------------------------
+# Drag & Drop selected files
+# ------------------------------------------------
+
+[[mgr.prepend_keymap]]
+on   = [ "<C-n>" ]
+run  = "plugin drag"
+desc = "Drag selected files"

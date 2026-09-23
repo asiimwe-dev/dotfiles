@@ -1,0 +1,285 @@
+# ==============================================================================
+# STARSHIP — Solarized Osaka (Lualine Adapted)
+# Theme: Solarized Osaka (CraftzDog / Takuya Matsuyama)
+# Style: Verbose modular capsules synced with Lualine's vibrant glassy palette
+# Requires: Any Nerd Font (JetBrainsMono, Hack, FiraCode, etc.)
+# ==============================================================================
+"$schema" = 'https://starship.rs/config-schema.json'
+add_newline = true
+palette = "solarized_osaka"
+command_timeout = 2000
+
+format = """
+$username\
+$hostname\
+$os\
+$directory\
+${custom.readonly}\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$sudo\
+$jobs\
+$c\
+$java\
+$ruby\
+$php\
+$zig\
+$lua\
+$nodejs\
+$bun\
+$python\
+$rust\
+$golang\
+$package\
+$docker_context\
+$kubernetes\
+$aws\
+$line_break\
+$character"""
+
+right_format = """
+$memory_usage\
+$cmd_duration\
+$status\
+$time\
+"""
+
+# ------------------------------------------------------------------------------
+# LUALINE-ADAPTED PALETTE 
+# ------------------------------------------------------------------------------
+[palettes.solarized_osaka]
+osaka_cyan = "#2dd4bf"
+osaka_blue = "#38bdf8"
+osaka_pink = "#c084fc"
+osaka_red = "#ff5370"
+osaka_green = "#4ade80"
+osaka_yellow = "#fbbf24"
+osaka_orange = "#f97316"
+osaka_gold = "#fbbf24"
+
+# Unified subtle container tint
+bg_glass = "#052630"
+
+# ------------------------------------------------------------------------------
+# STEP 1: CONTEXT & SYSTEM 
+# ------------------------------------------------------------------------------
+[username]
+show_always = false
+style_user = "bg:bg_glass fg:osaka_orange"
+style_root = "bg:bg_glass fg:osaka_red bold"
+format = "[](fg:bg_glass)[󰧂 user: $user]($style)[](fg:bg_glass) "
+
+[hostname]
+ssh_only = true
+style = "bg:bg_glass fg:osaka_gold"
+format = "[](fg:bg_glass)[󰒋 host: $hostname]($style)[](fg:bg_glass) "
+
+[os]
+disabled = false
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[$symbol OS]($style)[](fg:bg_glass) "
+
+[os.symbols]
+Arch = "󰣇 "
+Ubuntu = "󰕈 "
+Debian = "󰣚 "
+Fedora = "󰣛 "
+Linux = "󰌽 "
+Macos = "󰀵 "
+Windows = "󰍲 "
+
+# ------------------------------------------------------------------------------
+# STEP 2: DIRECTORY & PRIVILEGES
+# ------------------------------------------------------------------------------
+[directory]
+style = "bg:bg_glass fg:osaka_green bold"
+format = "[](fg:bg_glass)[󰉋 $path ]($style)[](fg:bg_glass) "
+truncation_length = 3
+truncation_symbol = "…/"
+home_symbol = "~"
+
+[custom.readonly]
+when = 'test ! -w .'
+style = "bg:bg_glass fg:osaka_red bold"
+format = "[](fg:bg_glass)[󰌾 RO]($style)[](fg:bg_glass) "
+
+[directory.substitutions]
+"~/Documents" = "~/󰈙 Docs"
+"/Documents" = "/󰈙 Docs"
+"~/Downloads" = "~/󰇚 Downloads"
+"/Downloads" = "/󰇚 Downloads"
+"~/Music" = "~/󰝚 Music"
+"/Music" = "/󰝚 Music"
+"~/Pictures" = "~/󰋩 Pics"
+"/Pictures" = "/󰋩 Pics"
+"~/Projects" = "~/󰲋 Projects"
+"/Projects" = "/󰲋 Projects"
+"~/Developer" = "~/󰲋 Dev"
+"/Developer" = "/󰲋 Dev"
+".config" = "󱁤 Config"
+
+# ------------------------------------------------------------------------------
+# STEP 3: GIT 
+# ------------------------------------------------------------------------------
+[git_branch]
+symbol = "󰘬 "
+style = "bg:bg_glass fg:osaka_gold bold"
+format = "[](fg:bg_glass)[$symbol(on $branch)]($style)[](fg:bg_glass) "
+
+[git_status]
+style = "bg:bg_glass fg:osaka_pink"
+format = "([](fg:bg_glass)[$all_status$ahead_behind]($style)[](fg:bg_glass) )"
+conflicted = "󰞇 "
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "󰹹 "
+untracked = "󰞋 ${count}"
+stashed = "󰆓 "
+modified = "󰏫 ${count}"
+staged = "󰐗 ${count}"
+renamed = "󰑕 "
+deleted = "󰧧 "
+
+[git_state]
+style = "bg:bg_glass fg:osaka_red"
+format = "[](fg:bg_glass)[󰜘 $state (step $progress_current of $progress_total)]($style)[](fg:bg_glass) "
+
+[git_metrics]
+disabled = false
+added_style = "bg:bg_glass fg:osaka_green"
+deleted_style = "bg:bg_glass fg:osaka_red"
+format = "[](fg:bg_glass)[+$added]($added_style)[/$deleted]($deleted_style)[](fg:bg_glass) "
+
+# ------------------------------------------------------------------------------
+# STEP 4: PRIVILEGE & JOBS 
+# ------------------------------------------------------------------------------
+[sudo]
+disabled = false
+style = "bg:bg_glass fg:osaka_red bold"
+symbol = "󰌋 ROOT ACTIVE"
+format = "[](fg:bg_glass)[$symbol]($style)[](fg:bg_glass) "
+
+[jobs]
+symbol = "✦ "
+style = "bg:bg_glass fg:osaka_yellow"
+format = "[](fg:bg_glass)[$symbol$number bg jobs]($style)[](fg:bg_glass) "
+
+# ------------------------------------------------------------------------------
+# STEP 5: RUNTIMES & PACKAGES
+# ------------------------------------------------------------------------------
+[package]
+symbol = "󰏗 "
+style = "bg:bg_glass fg:osaka_pink"
+format = "[](fg:bg_glass)[$symbol pkg $version]($style)[](fg:bg_glass) "
+
+[c]
+symbol = " "
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[$symbol C $version]($style)[](fg:bg_glass) "
+
+[java]
+symbol = " "
+style = "bg:bg_glass fg:osaka_red"
+format = "[](fg:bg_glass)[$symbol Java $version]($style)[](fg:bg_glass) "
+
+[ruby]
+symbol = " "
+style = "bg:bg_glass fg:osaka_red"
+format = "[](fg:bg_glass)[$symbol Ruby $version]($style)[](fg:bg_glass) "
+
+[php]
+symbol = " "
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[$symbol PHP $version]($style)[](fg:bg_glass) "
+
+[zig]
+symbol = " "
+style = "bg:bg_glass fg:osaka_orange"
+format = "[](fg:bg_glass)[$symbol Zig $version]($style)[](fg:bg_glass) "
+
+[lua]
+symbol = "󰢱 "
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[$symbol Lua $version]($style)[](fg:bg_glass) "
+
+[nodejs]
+symbol = "󰎙 "
+style = "bg:bg_glass fg:osaka_green"
+format = "[](fg:bg_glass)[$symbol Node $version]($style)[](fg:bg_glass) "
+
+[bun]
+symbol = "󰏗 "
+style = "bg:bg_glass fg:osaka_yellow"
+format = "[](fg:bg_glass)[$symbol Bun $version]($style)[](fg:bg_glass) "
+
+[python]
+symbol = "󰌠 "
+style = "bg:bg_glass fg:osaka_yellow"
+format = "[](fg:bg_glass)[$symbol Python $version( \\($virtualenv\\))]($style)[](fg:bg_glass) "
+
+[rust]
+symbol = "󱌣 "
+style = "bg:bg_glass fg:osaka_orange"
+format = "[](fg:bg_glass)[$symbol Rust $version]($style)[](fg:bg_glass) "
+
+[golang]
+symbol = "󰟓 "
+style = "bg:bg_glass fg:osaka_cyan"
+format = "[](fg:bg_glass)[$symbol Go $version]($style)[](fg:bg_glass) "
+
+# ------------------------------------------------------------------------------
+# STEP 6: CLOUD & CONTAINERS 
+# ------------------------------------------------------------------------------
+[docker_context]
+symbol = "󰡨 "
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[$symbol Docker: $context]($style)[](fg:bg_glass) "
+
+[kubernetes]
+disabled = false
+symbol = "󱃾 "
+style = "bg:bg_glass fg:osaka_cyan"
+format = "[](fg:bg_glass)[$symbol K8s: $context( \\($namespace\\))]($style)[](fg:bg_glass) "
+
+[aws]
+disabled = false
+symbol = "󰸏 "
+style = "bg:bg_glass fg:osaka_yellow"
+format = "[](fg:bg_glass)[$symbol AWS: $profile( \\($region\\))]($style)[](fg:bg_glass) "
+
+# ------------------------------------------------------------------------------
+# STEP 7: RIGHT PROMPT METRICS
+# ------------------------------------------------------------------------------
+[memory_usage]
+disabled = false
+threshold = 75
+symbol = "󰍛 "
+style = "bg:bg_glass fg:osaka_pink bold"
+format = "[](fg:bg_glass)[$symbol RAM: $ram]($style)[](fg:bg_glass) "
+
+[cmd_duration]
+min_time = 2000
+style = "bg:bg_glass fg:osaka_yellow"
+format = "[](fg:bg_glass)[󱎫 took $duration]($style)[](fg:bg_glass) "
+
+[status]
+disabled = false
+symbol = "󰅙 "
+style = "bg:bg_glass fg:osaka_red"
+format = "[](fg:bg_glass)[$symbol exited with $status]($style)[](fg:bg_glass) "
+
+[time]
+disabled = false
+time_format = "%I:%M %p"
+style = "bg:bg_glass fg:osaka_blue"
+format = "[](fg:bg_glass)[󱑎 at $time]($style)[](fg:bg_glass) "
+
+# ------------------------------------------------------------------------------
+# CHARACTER
+# ------------------------------------------------------------------------------
+[character]
+success_symbol = "[❯](bold fg:osaka_cyan)"
+error_symbol = "[❯](bold fg:osaka_red)"
+vimcmd_symbol = "[❮](bold fg:osaka_green)"

@@ -1,0 +1,19 @@
+# neovim — never share the lock file or author scratch notes
+config/nvim/lazy-lock.json
+config/nvim/CHANGES.md
+config/nvim/Notebook.md
+
+# editor cruft
+*.swp
+*~
+.DS_Store
+
+# backups created by install.sh
+~/dotfiles-backups-*/
+dotfiles-backups-*/
+
+# node modules (opencode plugins are re-installed)
+config/opencode/node_modules/
+
+# logs
+*.log

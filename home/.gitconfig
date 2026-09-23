@@ -1,0 +1,27 @@
+[user]
+	email = "YOUR_EMAIL@example.com"
+	name = Your Name
+[core]
+	editor = nvim
+	autocrlf = input
+	pager = delta
+[init]
+	defaultBranch = main
+[credential "https://github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/usr/bin/gh auth git-credential
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	side-by-side = true
+	line-numbers = true
+[pull]
+	rebase = true
+[merge]
+	conflictstyle = diff3
+[rerere]
+	enabled = true
