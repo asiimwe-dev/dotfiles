@@ -1,0 +1,6 @@
+{
+    "description": "Stub read by php-cs-fixer's @auto rule sets when a project has no composer.json of its own.",
+    "require": {
+        "php": ">=8.2"
+    }
+}

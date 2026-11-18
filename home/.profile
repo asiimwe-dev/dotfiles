@@ -1,0 +1,1 @@
+. "/home/asiimwe/.deno/env"

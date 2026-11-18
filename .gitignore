@@ -1,0 +1,13 @@
+# Never commit secrets — these are excluded from the snapshot as well.
+config/opencode/service.json
+config/gh/hosts.yml
+**/*.pem
+**/*.key
+**/id_rsa
+**/id_ed25519
+**/.env
+
+# Local noise
+*.bak
+*.swp
+.DS_Store
