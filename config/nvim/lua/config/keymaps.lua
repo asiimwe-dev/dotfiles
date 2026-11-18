@@ -35,7 +35,8 @@ map("i", "<C-]>", ai("dismiss"), { desc = "AI Dismiss", silent = true })
 map("n", "<C-d>", "<C-d>zz", { desc = "Scroll Down & Center" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Scroll Up & Center" })
 
--- Clear navigation history (<leader>hj = jump list, <leader>hm = marks).
+-- Clear navigation history (<leader>hj = jump list, <leader>hm = marks,
+-- <leader>hr = registers).
 -- `:clearjumps` only clears the current window's jumplist, so clear them all.
 map("n", "<leader>hj", function()
 	for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -59,6 +60,24 @@ map("n", "<leader>hm", function()
 	end
 	vim.notify("Marks cleared", vim.log.levels.INFO)
 end, { desc = "Clear All Marks" })
+
+-- Clear every writable register: unnamed, numbered 0-9, named a-z, the
+-- small-delete "-" and the clipboard "*"/"+".
+-- Vim rejects the read-only ones (% # : .), so they are simply not touched;
+-- note that with a clipboard provider this also empties the system clipboard.
+map("n", "<leader>hr", function()
+	local regs = { '"', "-", "*", "+" }
+	for i = 0, 9 do
+		regs[#regs + 1] = tostring(i)
+	end
+	for c = ("a"):byte(), ("z"):byte() do
+		regs[#regs + 1] = string.char(c)
+	end
+	for _, reg in ipairs(regs) do
+		pcall(vim.fn.setreg, reg, "")
+	end
+	vim.notify("Registers cleared", vim.log.levels.INFO)
+end, { desc = "Clear All Registers" })
 
 -- Notifications come from nvim-notify + noice (the Snacks notifier is off), so
 -- LazyVim's Snacks-based <leader>un is re-pointed. (<leader>n is in picker.lua.)

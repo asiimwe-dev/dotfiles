@@ -23,8 +23,6 @@ return {
 			local teal, yellow, muted, sky = P.teal, P.yellow, P.muted, P.sky
 
 			return {
-				-- Single window: the lualine filename already says it all.
-				hide = { only_win = true },
 				window = {
 					padding = 0,
 					-- vertical = 1 creates a 1-line gap from the top of the Neovim pane,
