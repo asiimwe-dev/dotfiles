@@ -14,6 +14,9 @@ source "$ZSH_CONFIG/functions.zsh"
 source "$ZSH_CONFIG/options.zsh"
 source "$ZSH_CONFIG/starship.zsh"
 
+# Fish-like private history mode (`private on|off|toggle|status`).
+source "$ZSH_CONFIG/private.zsh"
+
 # zsh-syntax-highlighting MUST be sourced last: it wraps widgets created by
 # fzf, autosuggestions, the transient-prompt hooks and starship itself.
 source "$HOME/.local/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"

@@ -47,7 +47,8 @@ and the "Restoring" section below to put it on another machine.
   - `scripts/status-net.sh` — Wi-Fi SSID + VPN name (NM + tunnel fallback)
   - `scripts/status-sys.sh` — CPU/RAM straight from `/proc`
 - **zsh** — framework-free modular config (aliases, functions, fzf, starship,
-  vendored oh-my-zsh libs, fzf-git helpers).
+  vendored oh-my-zsh libs, fzf-git helpers); fish-like `private on|off`
+  pauses history per shell and shows a red PRIVATE badge.
 - **Tool settings** — starship prompt, btop, htop, yazi, mpv, mise version pins,
   gh, opencode UI, GTK colours, fontconfig, tmux systemd user unit.
 

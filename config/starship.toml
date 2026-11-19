@@ -16,6 +16,7 @@ $hostname\
 $os\
 $directory\
 ${custom.readonly}\
+${env_var.STARSHIP_PRIVATE}\
 $git_branch\
 $git_state\
 $git_status\
@@ -106,6 +107,12 @@ when = 'test ! -w .'
 shell = ["sh"]
 style = "bg:bg_glass fg:osaka_red bold"
 format = "[](fg:bg_glass)[󰌾 RO]($style)[](fg:bg_glass) "
+
+# PRIVATE badge: value exported by `private on` (private.zsh).
+# Same env-var mechanism as STARSHIP_SUDO_ACTIVE; unset = no pill.
+[env_var.STARSHIP_PRIVATE]
+style = "bg:bg_glass fg:osaka_red bold"
+format = "[](fg:bg_glass)[󰌾 PRIVATE]($style)[](fg:bg_glass) "
 
 [directory.substitutions]
 "~/Documents" = "~/󰈙 Docs"
