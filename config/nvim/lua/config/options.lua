@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/config/options.lua
 -- Only settings that DIFFER from LazyVim's defaults live here. Anything
--- LazyVim already sets (autowrite, undofile, mouse, number, splitright, …)
+-- LazyVim already sets (autowrite, undofile, number, splitright, …)
 -- was removed so this file shows what is actually customised.
 
 -- Leader keys
@@ -29,6 +29,11 @@ local opt = vim.opt
 opt.winbar = "" -- incline.nvim floats the filename pill instead
 opt.conceallevel = 2 -- hide markdown markup unless the cursor is on the line
 opt.showtabline = 0 -- no tab/buffer bar; use the buffer picker (<leader>,)
+
+-- Keyboard-only workflow: no mouse in any mode (no click-to-position, wheel
+-- scrolling, drag-select or right-click menus). Neovim also stops asking the
+-- terminal for mouse reports, so kitty's own selection still works normally.
+opt.mouse = ""
 vim.o.winborder = "rounded" -- Neovim 0.11+: rounded borders on every float
 opt.fillchars:append({ eob = " " }) -- no ~ down empty lines
 opt.signcolumn = "yes"

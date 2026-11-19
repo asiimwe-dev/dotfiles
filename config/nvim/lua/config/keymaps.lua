@@ -1,13 +1,5 @@
 -- ~/.config/nvim/lua/config/keymaps.lua
---
--- Removed in the audit (all were redundant or caused input lag):
---   * `s*` window keys (ss/sv/sh/sj/sk/sl/sc/sq): every bare `s` waited out
---     `timeoutlen`. Window navigation is <C-h/j/k/l> (tmux.lua), splits are
---     <leader>- / <leader>|, close is <leader>wd (all LazyVim/plugin defaults).
---   * `jj`/`jk` insert-mode mappings: every `j` typed in insert mode waited.
---     Handled by better-escape.nvim (plugins/escape.lua) with no delay.
---   * <C-arrows> resize, <A-j>/<A-k> move lines, <S-h>/<S-l> buffers and
---     <leader>bb: identical to LazyVim defaults.
+
 local map = vim.keymap.set
 
 -- ─────────────────────────────────────────────────────────────────────────
