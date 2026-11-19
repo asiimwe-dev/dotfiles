@@ -20,8 +20,8 @@ hash = "d1e0499cae5f3aeb628c267616d4b682"
 
 [[plugin.deps]]
 use = "Joao-Queiroga/drag"
-rev = "5f6b284"
-hash = "5fa7ee4328551934e4af11e3547f3a2c"
+rev = "94de073"
+hash = "4e3f1669b6454a80fdc61b2b4f9305b0"
 
 [flavor]
 deps = []
