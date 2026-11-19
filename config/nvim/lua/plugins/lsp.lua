@@ -15,10 +15,11 @@ return {
 				-- ERROR sorts last (HINT -> ERROR), so on a mixed line the
 				-- inline message is the error and warnings land in "+N".
 				severity_sort = true,
-				-- Error Lens: errors *and* warnings inline. The icons, prefix
-				-- (+N) and inline noise filter live in config/diagnostics.lua;
-				-- `get` is a resolver so <leader>uv can change the level without
-				-- LazyVim's own diagnostics config overwriting it.
+				-- Error Lens: show every severity inline by default, including
+				-- hints such as Lua's unused local/function. <leader>uv raises
+				-- the floor; the icons, prefix and inline noise filter live in
+				-- config/diagnostics.lua, and `get` is a resolver so LazyVim's
+				-- own diagnostics config cannot overwrite the choice.
 				virtual_text = diagnostics.get,
 				float = {
 					border = "rounded",

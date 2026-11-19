@@ -38,8 +38,8 @@ and the "Restoring" section below to put it on another machine.
 ## What is in here
 
 - **Neovim** — LazyVim setup with `lazy-lock.json`, Java project generator, AI
-  config, Error Lens-style inline errors and warnings (`<leader>uv` cycles
-  verbosity), diagnostic/reference highlight tuning.
+  config, Error Lens-style inline diagnostics from hints up (`<leader>uv`
+  cycles verbosity), diagnostic/reference highlight tuning.
 - **kitty** — PlemolJP Console NF, glass/frosted look, top tab dock, custom
   keybinds, Solarized Osaka theme (`current-theme.conf`).
 - **tmux** — prefix `M-a`, top glass bar, fzf productivity suite,

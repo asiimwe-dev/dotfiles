@@ -90,7 +90,7 @@ map({ "n", "i" }, "<A-d>", function()
 	vim.diagnostic.open_float()
 end, { desc = "Line Diagnostics" })
 
--- Cycle inline verbosity: errors+warnings -> errors only -> everything.
+-- Cycle inline verbosity: everything -> errors+warnings -> errors only.
 -- <leader>ud (LazyVim) still toggles all diagnostics off/on.
 map("n", "<leader>uv", function()
 	require("config.diagnostics").cycle()

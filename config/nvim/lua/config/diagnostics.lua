@@ -59,11 +59,13 @@ local function build(min)
 end
 
 local levels = {
+	{ label = "everything", min = sev.HINT },
 	{ label = "errors + warnings", min = sev.WARN },
 	{ label = "errors only", min = sev.ERROR },
-	{ label = "everything", min = sev.HINT },
 }
 
+-- Default to everything (hints included); <leader>uv raises the floor one
+-- step at a time: everything -> errors+warnings -> errors only -> everything.
 local current = 1
 
 --- Resolver for vim.diagnostic.config: Neovim calls this on every render, so
