@@ -90,6 +90,12 @@ map({ "n", "i" }, "<A-d>", function()
 	vim.diagnostic.open_float()
 end, { desc = "Line Diagnostics" })
 
+-- Cycle inline verbosity: errors+warnings -> errors only -> everything.
+-- <leader>ud (LazyVim) still toggles all diagnostics off/on.
+map("n", "<leader>uv", function()
+	require("config.diagnostics").cycle()
+end, { desc = "Diagnostics Verbosity" })
+
 -- Git: workflows go through lazygit rather than the snacks git pickers.
 -- These three are kept explicitly so the snacks_picker extra cannot
 -- re-bind them to its picker versions. Picker keys that are dropped live
