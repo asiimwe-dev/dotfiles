@@ -3,7 +3,6 @@
 -- Mason automatically — no separate mason-lspconfig list is needed (the old
 -- one in polyglot.lua duplicated extras and installed servers that were
 -- explicitly disabled, e.g. ts_ls next to vtsls).
-local sev = vim.diagnostic.severity
 local diagnostics = require("config.diagnostics")
 
 return {
@@ -17,9 +16,10 @@ return {
 				-- inline message is the error and warnings land in "+N".
 				severity_sort = true,
 				-- Error Lens: errors *and* warnings inline. The icons, prefix
-				-- (+N) and inline noise filter live in config/diagnostics.lua
-				-- so <leader>uv can rebuild the same table at runtime.
-				virtual_text = diagnostics.virtual_text(sev.WARN),
+				-- (+N) and inline noise filter live in config/diagnostics.lua;
+				-- `get` is a resolver so <leader>uv can change the level without
+				-- LazyVim's own diagnostics config overwriting it.
+				virtual_text = diagnostics.get,
 				float = {
 					border = "rounded",
 					source = true,

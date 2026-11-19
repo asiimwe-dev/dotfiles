@@ -41,9 +41,8 @@ local function inline_format(d)
 end
 
 --- Build a complete virtual_text config for the given minimum severity.
---- `vim.diagnostic.config` replaces the whole table, so the cycle must pass
---- every key again rather than just `severity`.
-function M.virtual_text(min)
+--- `vim.diagnostic.config` replaces the whole table, so every key is included.
+local function build(min)
 	return {
 		severity = { min = min },
 		spacing = 2,
@@ -67,12 +66,18 @@ local levels = {
 
 local current = 1
 
+--- Resolver for vim.diagnostic.config: Neovim calls this on every render, so
+--- the level survives LazyVim applying its own diagnostics config when
+--- nvim-lspconfig loads (which a one-shot table would not).
+function M.get()
+	return build(levels[current].min)
+end
+
 --- Cycle the inline verbosity: errors+warnings -> errors only -> everything.
 function M.cycle()
 	current = current % #levels + 1
-	local level = levels[current]
-	vim.diagnostic.config({ virtual_text = M.virtual_text(level.min) })
-	vim.notify("Inline diagnostics: " .. level.label, vim.log.levels.INFO)
+	vim.diagnostic.config({}) -- re-render every buffer with the new level
+	vim.notify("Inline diagnostics: " .. levels[current].label, vim.log.levels.INFO)
 end
 
 return M
